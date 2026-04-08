@@ -1,0 +1,40 @@
+import time
+from gpiozero import LED, Button
+
+#initialize LED
+redled = LED(18)
+greenled = LED(23)
+blueled = LED(24)
+
+pushbuttonred = Button(25)
+pushbuttongreen = Button(12)
+pushbuttonblue = Button(20)
+
+#Light on functions
+def BlueLEDon():
+    blueled.on()
+def RedLEDon():
+    redled.on()
+def GreenLEDon():
+    greenled.on()
+    
+while True:  
+    # Blue button
+    if pushbuttonblue.is_pressed:
+        BlueLEDon()
+    else:
+        blueled.off()
+
+    # Green button
+    if pushbuttongreen.is_pressed:
+        GreenLEDon()
+    else:
+        greenled.off()
+
+    # Red button
+    if pushbuttonred.is_pressed:
+        RedLEDon()
+    else:
+        redled.off()
+
+    time.sleep(0.01) 
